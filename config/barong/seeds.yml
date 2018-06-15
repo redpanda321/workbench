@@ -1,0 +1,36 @@
+# List of Barong administrators.
+#
+# Other parameters that you can set here can be found in Account,
+# Profile and Phone models (e.g. app/models/account.rb...); all the
+# model properties are listed at the very bottom of this models files.
+#
+# Note: email is the only required field here.
+accounts:
+  - account:
+      email: admin@barong.io
+      password: 123ABCabc
+      role: admin
+      state: active
+      level: 3
+
+# List of applications that will use Barong OAuth.
+# You can set any Doorkeeper::Application property here.
+#
+# Note: in production env, `redirect_uri` can only be a 'https' url.
+applications:
+  - name: "Local Peatio"
+    redirect_uri: http://api.wb.local/auth/barong/callback
+    skipauth: true
+    uid: changeme
+    secret: changeme
+
+levels:
+  - key: email
+    value: verified
+    description: "User clicked on the confirmation link"
+  - key: phone
+    value: verified
+    description: "User entered a valid code from sms"
+  - key: document
+    value: verified
+    description: "User personal documents have been verified"
