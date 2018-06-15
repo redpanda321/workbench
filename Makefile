@@ -16,13 +16,13 @@ setup-apps: build
 	$(COMPOSE) run --rm barong "./bin/setup"
 
 run: prepare setup-apps
-	$(COMPOSE) up peatio barong proxy
+	$(COMPOSE) up peatio barong proxy trading_ui
 
 test: prepare
 	@$(COMPOSE) run --rm peatio_specs
 
 start: prepare setup-apps
-	$(COMPOSE) up -d peatio barong proxy
+	$(COMPOSE) up -d peatio barong proxy trading_ui
 
 update:
 	git submodule update --init --remote
