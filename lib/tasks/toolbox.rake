@@ -8,6 +8,7 @@ namespace :toolbox do
     run_cmd = %w[docker-compose run --rm toolbox run]
 
     YAML.safe_load(ERB.new(File.read('config/toolbox.yaml')).result)
+
         .transform_keys { |k| '--' << k }
         .each_pair { |k, v| run_cmd << k << v.to_s }
 
